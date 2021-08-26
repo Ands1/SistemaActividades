@@ -1,0 +1,2 @@
+module Activity::NotesHelper
+end
