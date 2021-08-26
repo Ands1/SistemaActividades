@@ -1,10 +1,20 @@
+postgresql: &postgresql
+  adapter: postgresql
+  encoding: unicode
+  host : localhost
+  pool: 5
+  timeout: 5000
+  username: ands
+  password: 12345
+
 development:
-  adapter: async
+  <<: *postgresql
+  database: BDLOMAX_development
 
 test:
-  adapter: test
+  <<: *postgresql
+  database: BDLOMAX_test
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: BDLOMAX_production
+  <<: *postgresql
+  database: BDLOMAX_production
