@@ -4,6 +4,7 @@ class Activity::ParticipantsController < ApplicationController
   # GET /activity/participants or /activity/participants.json
   def index
     @activity_participants = Activity::Participant.all
+    
   end
 
   # GET /activity/participants/1 or /activity/participants/1.json
@@ -22,10 +23,12 @@ class Activity::ParticipantsController < ApplicationController
   # POST /activity/participants or /activity/participants.json
   def create
     @activity_participant = Activity::Participant.new(activity_participant_params)
+    @activity_participant.user = current_user
+    @activity_participant.activity = Activity.find_by_id(params[:activity_id])
 
     respond_to do |format|
       if @activity_participant.save
-        format.html { redirect_to @activity_participant, notice: "Participant was successfully created." }
+        format.html { redirect_to activity_participants_url, notice: "Participant was successfully created." }
         format.json { render :show, status: :created, location: @activity_participant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,11 +62,11 @@ class Activity::ParticipantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_participant
-      @activity_participant = Activity::Participant.find(params[:id])
+      @activity_participant = current_user
     end
 
     # Only allow a list of trusted parameters through.
     def activity_participant_params
-      params.fetch(:activity_participant, {})
+      params.fetch(:activity_participant, {}).permit(:participation_type, :contribution)
     end
 end

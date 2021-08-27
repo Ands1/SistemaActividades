@@ -12,9 +12,8 @@
   <tbody>
     <% @activity_participants.each do |activity_participant| %>
       <tr>
-        <td><%= link_to 'Show', activity_participant %></td>
-        <td><%= link_to 'Edit', edit_activity_participant_path(activity_participant) %></td>
-        <td><%= link_to 'Destroy', activity_participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= activity_participant.participation_type %></td>
+        <td><%= activity_participant.contribution %></td>
       </tr>
     <% end %>
   </tbody>
