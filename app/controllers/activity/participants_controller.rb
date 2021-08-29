@@ -41,7 +41,7 @@ class Activity::ParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @activity_participant.update(activity_participant_params)
-        format.html { redirect_to @activity_participant, notice: "Participant was successfully updated." }
+        format.html { redirect_to activity_participant_url(@activity_participant.activity), notice: "Participant was successfully updated." }
         format.json { render :show, status: :ok, location: @activity_participant }
       else
         format.html { render :edit, status: :unprocessable_entity }

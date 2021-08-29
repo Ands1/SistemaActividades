@@ -30,7 +30,7 @@ class Activity::NotesController < ApplicationController
 
     respond_to do |format|
       if @activity_note.save
-        format.html { redirect_to activity_notes_url, notice: "Note was successfully created." }
+        format.html { redirect_to activity_notes_url(@activity_note), notice: "Note was successfully created." }
         format.json { render :show, status: :created, location: @activity_note }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class Activity::NotesController < ApplicationController
   def update
     respond_to do |format|
       if @activity_note.update(activity_note_params)
-        format.html { redirect_to activity_notes_url, notice: "Note was successfully updated." }
+        format.html { redirect_to activity_notes_url(@activity_note.activity, @notes), notice: "Note was successfully updated." }
         format.json { render :show, status: :ok, location: @activity_note }
       else
         format.html { render :edit, status: :unprocessable_entity }
