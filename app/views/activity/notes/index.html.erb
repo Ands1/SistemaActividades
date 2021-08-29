@@ -13,7 +13,9 @@
     <% @activity_notes.each do |activity_note| %>
       <tr>
         <td><%= activity_note.comment %></td>
-
+        <td><%= link_to 'Show', activity_note_url(:id => activity_note.id) %></td>
+        <td><%= link_to 'Edit', edit_activity_note_path(:id => activity_note.id) %></td>
+  
       </tr>
     <% end %>
   </tbody>
@@ -22,3 +24,4 @@
 <br>
 
 <%= link_to 'New Activity Note', new_activity_note_path %>
+<%= link_to 'Back', activities_path %>

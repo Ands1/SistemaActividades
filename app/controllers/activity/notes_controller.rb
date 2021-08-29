@@ -8,6 +8,7 @@ class Activity::NotesController < ApplicationController
 
   # GET /activity/notes/1 or /activity/notes/1.json
   def show
+    
   end
 
   # GET /activity/notes/new

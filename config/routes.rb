@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         
     end
     devise_for :users
+#    resources :users_admin, :controller => 'users'
     get 'home/index'
     root to: "home#index"
 end

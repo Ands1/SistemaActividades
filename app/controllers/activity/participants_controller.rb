@@ -3,7 +3,7 @@ class Activity::ParticipantsController < ApplicationController
 
   # GET /activity/participants or /activity/participants.json
   def index
-    @activity_participants = Activity::Participant.all
+    @activity_participants = Activity::Participant.where(activities_id: params[:activity_id]) 
     
   end
 
@@ -62,7 +62,7 @@ class Activity::ParticipantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_participant
-      @activity_participant = current_user
+      @activity_participant = Activity::Participant.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

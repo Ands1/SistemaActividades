@@ -12,8 +12,11 @@
   <tbody>
     <% @activity_participants.each do |activity_participant| %>
       <tr>
-        <td class="mx-auto"><%= activity_participant.participation_type %></td>
+        <td><%= activity_participant.participation_type %></td>
         <td><%= activity_participant.contribution %></td>
+        <td><%= link_to 'Show', activity_participant_url(:id => activity_participant.id) %></td>
+        <td><%= link_to 'Edit', edit_activity_participant_path(:id => activity_participant.id) %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -22,3 +25,5 @@
 <br>
 
 <%= link_to 'New Activity Participant', new_activity_participant_path %>
+<%= link_to 'Back', activities_path %>
+
