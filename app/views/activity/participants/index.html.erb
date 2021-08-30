@@ -16,6 +16,7 @@
         <td><%= activity_participant.contribution %></td>
         <td><%= link_to 'Show', activity_participant_url(:id => activity_participant.id) %></td>
         <td><%= link_to 'Edit', edit_activity_participant_path(:id => activity_participant.id) %></td>
+        <td><%= link_to 'Destroy', activity_participant_path(activity_participant.activity, activity_participant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
     <% end %>

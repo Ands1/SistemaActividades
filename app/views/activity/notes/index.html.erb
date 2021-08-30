@@ -15,8 +15,7 @@
         <td><%= activity_note.comment %></td>
         <td><%= link_to 'Show', activity_note_url(:id => activity_note.id) %></td>
         <td><%= link_to 'Edit', edit_activity_note_path(:id => activity_note.id) %></td>
-        <td><%= link_to 'Destroy', activity_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  
+        <td><%= link_to 'Destroy', activity_note_path(activity_note.activity, activity_note), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
