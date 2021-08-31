@@ -3,13 +3,17 @@ Rails.application.routes.draw do
 #        resources :notes
 #        resources :participants
 #    end
+
+
     devise_for :users,
     controllers: {:registrations => "registrations"}
 
+    
     as :user do
-        get "/register", to: "registrations#new", as: "register"
-      end
-
+        get "/registrations", to: "registrations#index"
+        get "/registrations/new", to: "registrations#new"
+        post "/registrations", to: "registrations#create"
+    end
     resources :activities do
         scope module: :activity do 
             resources :notes

@@ -12,7 +12,7 @@
   <% end %>
 
     <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name%>
     <%= form.text_field :name %>
   </div>
 
@@ -41,10 +41,16 @@
     <%= form.datetime_select :end_date %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= form.label :state %>
     <%= form.text_field :state %>
   </div>
+
+<!--  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.collection_select :users_id, User.order(:id),:id, :username %> <br>
+  </div>-->
+  
 
 
 
