@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <h1>Activity Notes</h1>
 
-<table>
+<table class="table text-center">
   <thead>
     <tr>
+      <th>Comentario</th>
+      <th>Participante</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,6 +15,8 @@
     <% @activity_notes.each do |activity_note| %>
       <tr>
         <td><%= activity_note.comment %></td>
+        <td><%= activity_note.user.username %></td>
+
         <td><%= link_to 'Show', activity_note_url(:id => activity_note.id) %></td>
         <td><%= link_to 'Edit', edit_activity_note_path(:id => activity_note.id) %></td>
         <td><%= link_to 'Destroy', activity_note_path(activity_note.activity, activity_note), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,5 +27,5 @@
 
 <br>
 
-<%= link_to 'New Activity Note', new_activity_note_path %>
+<%= link_to 'New Activity Note', new_activity_note_path %> |
 <%= link_to 'Back', activities_path %>

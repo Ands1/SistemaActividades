@@ -10,5 +10,3 @@ user = User.create_with(
 ).find_or_create_by(
     :email                 => "1azands@gmail.com",
 )
-
-user.save!

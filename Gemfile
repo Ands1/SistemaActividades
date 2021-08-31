@@ -2,18 +2,16 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
-
+# Flexible authentication solution for Rails with Warden.
 gem 'devise'
-
-#GEMA DE POSTGRES
+# Postgres gem to manage databases
 gem "pg", ">= 0.18", "< 2.0"
-
-#GEMA DE BULMA
+# Bulma Gem to give styles to app
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
-
-# Gemfile
+# REXML is an XML toolkit for Ruby
 gem 'rexml', '~> 3.2.4'
-
+# Cancancan gem to have an easy user rol administration
+gem 'cancancan'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use sqlite3 as the database for Active Record

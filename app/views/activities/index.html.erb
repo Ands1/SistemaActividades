@@ -2,15 +2,17 @@
 
 <h1>Activities</h1>
 
-<table>
+<table class='table text-center'>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Description</th>
       <th>Location</th>
       <th>Total cost</th>
       <th>Initial date</th>
       <th>End date</th>
+      <!--<th>Usuario encargado</th>>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +20,14 @@
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
+        <td><%= activity.id %></td>
         <td><%= activity.name %></td>
         <td><%= activity.description %></td>
         <td><%= activity.location %></td>
         <td><%= activity.total_cost %></td>
         <td><%= activity.initial_date %></td>
         <td><%= activity.end_date %></td>
+        <!--<td><%= current_user.first_name %></td>-->
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -36,5 +40,5 @@
 
 <br>
 
-<%= link_to 'New Activity', new_activity_path %>
+<%= link_to 'New Activity', new_activity_path %> |
 <%= link_to 'Back', home_index_path %>
