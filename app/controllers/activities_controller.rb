@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show edit update destroy ]
-
+  
   # GET /activities or /activities.json
   def index
     @activities = Activity.all
@@ -22,7 +22,7 @@ class ActivitiesController < ApplicationController
   # POST /activities or /activities.json
   def create
     @activity = Activity.new(activity_params)
-
+    @activity.user = current_user
     respond_to do |format|
       if @activity.save
         format.html { redirect_to @activity, notice: "Activity was successfully created." }
@@ -65,6 +65,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.fetch(:activity, {}).permit(:name, :description, :location, :total_cost, :initial_date, :end_date, :state)
+      params.fetch(:activity, {}).permit(:name, :description, :location, :total_cost, :type_activity, :initial_date, :end_date, :state)
     end
 end

@@ -18,8 +18,13 @@
         <td><%= activity_note.user.username %></td>
 
         <td><%= link_to 'Show', activity_note_url(:id => activity_note.id) %></td>
+
+        <% if can? :update, activity_note %>
         <td><%= link_to 'Edit', edit_activity_note_path(:id => activity_note.id) %></td>
+        <%end%>
+        <% if can? :destroy, activity_note %>
         <td><%= link_to 'Destroy', activity_note_path(activity_note.activity, activity_note), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

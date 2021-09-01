@@ -23,7 +23,7 @@ class Activity::ParticipantsController < ApplicationController
   # POST /activity/participants or /activity/participants.json
   def create
     @activity_participant = Activity::Participant.new(activity_participant_params)
-    @activity_participant.user = current_user
+    #@activity_participant.user = current_user
     @activity_participant.activity = Activity.find_by_id(params[:activity_id])
 
     respond_to do |format|
@@ -67,6 +67,6 @@ class Activity::ParticipantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_participant_params
-      params.fetch(:activity_participant, {}).permit(:participation_type, :contribution)
+      params.fetch(:activity_participant, {}).permit(:participation_type, :contribution, :users_id)
     end
 end

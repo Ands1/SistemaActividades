@@ -1,7 +1,7 @@
 class Activity < ApplicationRecord
     has_many :activity_note, dependent: :delete_all, class_name: "Activity::Note", foreign_key: "activities_id"
     has_many :activity_participant, dependent: :delete_all, class_name: "Activity::Participant", foreign_key: "activities_id"
-
+    belongs_to :user, class_name: "User", foreign_key: "users_id"
     validates :name, presence: true, allow_blank: false
     validates :description, presence: true, allow_blank: false
     validates :location, presence: true, allow_blank: false

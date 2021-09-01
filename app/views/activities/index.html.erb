@@ -1,4 +1,4 @@
-<!--<p id="notice"><%= notice %></p>-->
+<p id="notice"><%= notice %></p>
 
 <h1>Activities</h1>
 
@@ -10,6 +10,7 @@
       <th>Description</th>
       <th>Location</th>
       <th>Total cost</th>
+      <th>Activity Type</th>
       <th>Initial date</th>
       <th>End date</th>
       <th colspan="3"></th>
@@ -24,11 +25,20 @@
         <td><%= activity.description %></td>
         <td><%= activity.location %></td>
         <td><%= activity.total_cost %></td>
+        <td><%= activity.type_activity%></td>
         <td><%= activity.initial_date %></td>
         <td><%= activity.end_date %></td>
+
+        
         <td><%= link_to 'Show', activity %></td>
+
+        <% if can? :update, activity %>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <%end%>
+        
+        
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
         
 
       </tr>

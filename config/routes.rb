@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 #        resources :notes
 #        resources :participants
 #    end
-    match 'users/:id' => 'users#destroy', :via => :delete, :as => :adm_destroy_user
+
 
     devise_for :users,
     controllers: {:registrations => "registrations"}
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         get "/registrations", to: "registrations#index"
         get "/registrations/new", to: "registrations#new"
         post "/registrations", to: "registrations#create"
+
+        
     end
     resources :activities do
         scope module: :activity do 
