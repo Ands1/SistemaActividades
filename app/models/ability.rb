@@ -4,14 +4,17 @@ class Ability
   include CanCan::Ability
 
   user ||= User.new # guest user (not logged in)
-      if user.superadministrator?
-       can :manage, :all
-      elsif user.teammember?
-       can :read, :all
+      if user.role == "superadministrator"
+        can :manage, :all
+       
+      elsif user.role == "teammember"
+        can [:create, :update, :destroy], [activity, note, participant]
 
-      elsif user.creator?
-      can :read, :all
+      elsif user.role == "creator"
+        can :read, :all
 
+      else user.role == "participant"
+        can :read, :all
      end
 
     # Define abilities for the passed in user here. For example:
