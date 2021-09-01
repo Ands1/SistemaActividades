@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 #        resources :notes
 #        resources :participants
 #    end
-
+    match 'users/:id' => 'users#destroy', :via => :delete, :as => :adm_destroy_user
 
     devise_for :users,
     controllers: {:registrations => "registrations"}

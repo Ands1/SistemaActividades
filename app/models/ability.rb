@@ -3,7 +3,17 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  user ||= User.new # guest user (not logged in)
+      if user.superadministrator?
+       can :manage, :all
+      elsif user.teammember?
+       can :read, :all
+
+      elsif user.creator?
+      can :read, :all
+
+     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -13,7 +23,7 @@ class Ability
     #     can :read, :all
     #   end
     #
-    # The first argument to `can` is the action you are giving the user
+    # The first argument to `can` is t he action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
     # here are :read, :create, :update and :destroy.
@@ -30,5 +40,9 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
+
+    # enum {
+    # low : 'low',
+    #
+    #}
 end
