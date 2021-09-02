@@ -19,12 +19,16 @@ ActiveRecord::Schema.define(version: 2021_08_26_030624) do
     t.string "name"
     t.text "description"
     t.string "location"
+    t.string "creator"
     t.string "total_cost"
+    t.string "type_activity"
     t.datetime "initial_date"
     t.datetime "end_date"
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_activities_on_users_id"
   end
 
   create_table "activity_notes", force: :cascade do |t|
@@ -61,9 +65,14 @@ ActiveRecord::Schema.define(version: 2021_08_26_030624) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role"], name: "index_users_on_role"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "activities", "users", column: "users_id"
   add_foreign_key "activity_notes", "activities", column: "activities_id"
   add_foreign_key "activity_notes", "users", column: "users_id"
   add_foreign_key "activity_participants", "activities", column: "activities_id"

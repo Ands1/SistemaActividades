@@ -3,7 +3,8 @@ class Activity::ParticipantsController < ApplicationController
 
   # GET /activity/participants or /activity/participants.json
   def index
-    @activity_participants = Activity::Participant.all
+    @activity = Activity.find_by_id(params[:activity_id])
+    @activity_participants = Activity::Participant.where(activities_id: params[:activity_id]) 
     
   end
 
@@ -23,7 +24,7 @@ class Activity::ParticipantsController < ApplicationController
   # POST /activity/participants or /activity/participants.json
   def create
     @activity_participant = Activity::Participant.new(activity_participant_params)
-    @activity_participant.user = current_user
+    #@activity_participant.user = current_user
     @activity_participant.activity = Activity.find_by_id(params[:activity_id])
 
     respond_to do |format|
@@ -41,7 +42,7 @@ class Activity::ParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @activity_participant.update(activity_participant_params)
-        format.html { redirect_to @activity_participant, notice: "Participant was successfully updated." }
+        format.html { redirect_to activity_participant_url(@activity_participant.activity), notice: "Participant was successfully updated." }
         format.json { render :show, status: :ok, location: @activity_participant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,11 +63,11 @@ class Activity::ParticipantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_participant
-      @activity_participant = current_user
+      @activity_participant = Activity::Participant.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def activity_participant_params
-      params.fetch(:activity_participant, {}).permit(:participation_type, :contribution)
+      params.fetch(:activity_participant, {}).permit(:participation_type, :contribution, :users_id)
     end
 end

@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <p>
   <strong>Comment:</strong>
   <%= @activity_note.comment%>
 </p>
 
-<%= link_to 'Edit', edit_activity_note_path(@activity_note) %> |
+<%= link_to 'Edit', edit_activity_note_path(@activity_note.activity) %> |
 <%= link_to 'Back', activity_notes_path %>

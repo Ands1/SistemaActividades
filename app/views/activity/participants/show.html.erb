@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <p>
-  <strong>Participacion:</strong>
-  <%= @activity_note.participation_type%>
+  <strong>Participación:</strong>
+  <%= @activity_participant.participation_type%>
 </p>
 
 <p>
-  <strong>Contribución:</strong>
-  <%= @activity_note.contribution%>
+  <strong>Participación:</strong>
+  <%= @activity_participant.contribution%>
 </p>
 
-<%= link_to 'Edit', edit_activity_participant_path(@activity_participant) %> |
+
+
+
+<%= link_to 'Edit', edit_activity_participant_path(@activity_participant.activity) %> |
 <%= link_to 'Back', activity_participants_path %>

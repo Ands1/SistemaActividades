@@ -1,10 +1,13 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
-<h1>Activity Participants</h1>
+<h1><%=@activity.name%></h1>
 
-<table>
+<table class="table text-center">
   <thead>
     <tr>
+      <th>Tipo de participación</th>
+      <th>Contribución</th>
+      <th>Participante</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,8 +15,18 @@
   <tbody>
     <% @activity_participants.each do |activity_participant| %>
       <tr>
-        <td class="mx-auto"><%= activity_participant.participation_type %></td>
+        <td><%= activity_participant.participation_type %></td>
         <td><%= activity_participant.contribution %></td>
+        <td><%= activity_participant.user.username %></td>
+        
+        <td><%= link_to 'Show', activity_participant_url(:id => activity_participant.id) %></td>
+        
+        <% if can? :update, activity_participant %>
+        <td><%= link_to 'Edit', edit_activity_participant_path(:id => activity_participant.id) %></td>
+        <%end%>
+        <% if can? :destroy, activity_participant %>
+        <td><%= link_to 'Destroy', activity_participant_path(activity_participant.activity, activity_participant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -22,3 +35,5 @@
 <br>
 
 <%= link_to 'New Activity Participant', new_activity_participant_path %>
+<%= link_to 'Back', activities_path %>
+
