@@ -3,6 +3,7 @@ class Activity::ParticipantsController < ApplicationController
 
   # GET /activity/participants or /activity/participants.json
   def index
+    @activity = Activity.find_by_id(params[:activity_id])
     @activity_participants = Activity::Participant.where(activities_id: params[:activity_id]) 
     
   end

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <h1>Usuarios registrados</h1>
 
@@ -9,6 +9,7 @@
       <th class="">Last name</th>
       <th class="">Username</th>
       <th class="">Email</th>
+      <th class="">Roles</th>
 
       <th colspan="7"></th>
     </tr>
@@ -21,8 +22,10 @@
         <td class=""><%= user.last_name %></td>
         <td class=""><%= user.username %></td>
         <td class=""><%= user.email %></td>
+        <td class=""><%= user.role %></td>
 
         <td><%= link_to 'Show'%></td>
+        
         <% if can? :update, user %>
         <td><%= link_to 'Edit', edit_registration_path(user)%></td>
         <%end%>

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_030624) do
     t.string "name"
     t.text "description"
     t.string "location"
+    t.string "creator"
     t.string "total_cost"
     t.string "type_activity"
     t.datetime "initial_date"
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_030624) do
     t.index ["first_name"], name: "index_users_on_first_name"
     t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role"], name: "index_users_on_role", unique: true
+    t.index ["role"], name: "index_users_on_role"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

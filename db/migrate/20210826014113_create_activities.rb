@@ -4,6 +4,7 @@ class CreateActivities < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :description
       t.string :location
+      t.string :creator
       t.string :total_cost
       t.string :type_activity
       t.datetime :initial_date

@@ -1,4 +1,10 @@
 class Activity < ApplicationRecord
+
+    enum type_activity: {
+        publico: "Publico", 
+        privado: "Privado"    
+      }
+
     has_many :activity_note, dependent: :delete_all, class_name: "Activity::Note", foreign_key: "activities_id"
     has_many :activity_participant, dependent: :delete_all, class_name: "Activity::Participant", foreign_key: "activities_id"
     belongs_to :user, class_name: "User", foreign_key: "users_id"
@@ -9,4 +15,6 @@ class Activity < ApplicationRecord
     validates :initial_date, presence: true, allow_blank: false
     validates :end_date, presence: true, allow_blank: false
     validates :state, presence: true, allow_blank: false
+
+
 end

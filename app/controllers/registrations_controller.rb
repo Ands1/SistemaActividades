@@ -18,16 +18,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-        if @user.update(user_params)
-            redirect_to registrations_path
-        else
-            render :edit 
-        end
+    #@user = User.find(params[:id])
+    #    if @user.update(user_params)
+    #        redirect_to registrations_path
+    #    else
+    #        render :edit 
+    #    end
   end
 
   def delete

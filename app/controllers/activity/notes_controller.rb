@@ -3,6 +3,7 @@ class Activity::NotesController < ApplicationController
 
   # GET /activity/notes or /activity/notes.json
   def index
+    @activity = Activity.find_by_id(params[:activity_id])
     @activity_notes = Activity::Note.where(activities_id: params[:activity_id]) 
   end
 

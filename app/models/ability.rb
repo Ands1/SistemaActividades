@@ -11,20 +11,14 @@ class Ability
       can :read, :all
       can :create, :all
       can :update, :all
-      can :manage, Activity
+      #can :manage, Activity
+      #cannot :destroy, Activity
       cannot :destroy, User
       can :destroy, Activity do |activity|
         activity.user == user
       end
-
-
-    elsif user.role == "creator"
-      can :destroy, Activity do |activity|
-        activity.user == user
-      end
-
-    else user.role == "participant"
-      
     end
+
+
   end
 end

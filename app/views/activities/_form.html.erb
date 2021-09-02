@@ -31,9 +31,9 @@
     <%= form.text_field :total_cost %>
   </div>
 
-    <div class="field">
-    <%= form.label :type_activity %>
-    <%= form.text_field :type_activity %>
+  <div class="field">
+    <%= form.label :activity_type %>
+    <%= form.select(:type_activity, Activity.type_activities.keys.map {|type_activity| [type_activity.titleize,type_activity ]}) %>
   </div>
 
   <div class="field">

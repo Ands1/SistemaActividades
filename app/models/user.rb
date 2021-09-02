@@ -3,10 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   enum role: {
-    participant: "participant",
-    creator: "creator", 
-    member: "member",
-    superadministrator: "superadministrator" 
+    superadministrator: "superadministrator", 
+    member: "member"    
   }
 
 

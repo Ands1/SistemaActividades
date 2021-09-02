@@ -48,12 +48,19 @@ class ActivitiesController < ApplicationController
   end
 
   # DELETE /activities/1 or /activities/1.json
+ 
   def destroy
-    
+    if can? :destroy, @activity
     @activity.destroy
-    respond_to do |format|
+      respond_to do |format|
       format.html { redirect_to activities_url, notice: "Activity was successfully destroyed." }
       format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+      format.html { redirect_to activities_url, notice: " Your role is not high enough to do this, please contact your administrator." }
+      format.json { head :no_content }
+      end
     end
   end
 

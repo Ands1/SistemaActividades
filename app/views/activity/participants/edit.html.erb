@@ -1,7 +1,9 @@
+<% if can? :update, @activity_participant %>
 <h1>Editing Activity Participant</h1>
 
 <%= render 'form', activity_participant: @activity_participant %>
 
 <%= link_to 'Show', @activity_participant %> |
+<%end%>
 
 <%= link_to 'Back', activity_participants_path %>
